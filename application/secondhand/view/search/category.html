@@ -1,0 +1,165 @@
+﻿{extend name="model"}
+    {block name="body"}
+            <div class="category-search">
+                <div class="container">
+                    <div class="row category-search-box">
+                        <form>
+                            <div class="col-md-4 col-sm-4  cat-search-input">
+                                <select class="form-control">
+                                    <option selected>分类</option>
+                                    <option>小卡卡贴</option>
+                                    <option>专辑海报</option>
+                                    <option>明信写真</option>
+                                    <option>衣服配饰</option>
+                                    <option>限量定制</option>
+                                    <option>其余周边</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-4  cat-search-input">
+                                <input type="text" class="form-control" placeholder="I want to find...">
+                            </div>
+                            <div class="col-md-4 col-sm-4  cat-search-input">
+                                <button class="btn btn-custom btn-block"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <section class="category-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="breadcrumb pull-right">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="category.html">Category</a></li>
+                                <li>Detail Product</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                            <div class="widget">
+                                <div class="widget-header">
+                                    <h3>商品分类</h3>
+                                </div>
+                                <div class="widget-body">
+                                    <ul class="trends">
+                                        <li><a href="/secondhand/search/category?searchkey=1">小卡卡贴 &nbsp;<span class="item-numbers">(2,342)</span></a></li>
+                                        <li><a href="/secondhand/search/category?searchkey=2">专辑海报 &nbsp;<span class="item-numbers">(2,342)</span></a></li>
+                                        <li><a href="/secondhand/search/category?searchkey=3">明信写真 &nbsp;<span class="item-numbers">(2,342)</span></a></li>
+                                        <li><a href="/secondhand/search/category?searchkey=4">衣服配饰 &nbsp;<span class="item-numbers">(2,342)</span></a></li>
+                                        <li><a href="/secondhand/search/category?searchkey=5">限量定制 &nbsp;<span class="item-numbers">(2,342)</span></a></li>
+                                        <li><a href="/secondhand/search/category?searchkey=6">其余周边 &nbsp;<span class="item-numbers">(2,342)</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="widget">
+                                <div class="widget-header">
+                                    <h3>购买趋势</h3>
+                                </div>
+                                <div class="widget-body">
+                                    <ul class="brands">
+                                        <li><label>SuperJunior</label></li>
+                                        <li><label>EXO</label></li>
+                                        <li><label>Bigbang</label></li>
+                                        <li><label>TVXQ</label></li>
+                                        <li><label>李易峰</label></li>
+                                        <li><label>华晨宇</label></li>
+                                        <li><label>周杰伦</label></li>
+                                        <li><label>张杰</label></li>
+                                    </ul>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-9">
+                            <div class="search-results-box">
+                                <div class="row">
+                                    <div class="col-md-12 search-results">
+                                        Keyword : <span>"{$key}"</span>  Results : <span>{$count}</span> items
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-results">
+                                <?php if($goods==null) {?>
+                                <div class="row">
+                                    暂无此类商品，请您再去<a href="/secondhand/index/index">首页</a>逛逛吧
+                                </div>
+                                <?php }else{  ?>
+                                <div class="row">
+                                    {volist name="goods" id="a"}
+                                    <div class="col-sm-12">
+                                        <div class="item-ads">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-3">
+                                                    <div class="item-img">
+                                                        <img alt="" src="{$a.goods_img}" width="120px" height="150px">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-6">
+                                                    <div class="item-title">
+                                                        <a href="/secondhand/product/detail?id={$a.id}"><h4>{$a.goods_name}</h4></a>
+                                                    </div>
+                                                    <div class="item-meta">
+                                                        <ul>
+                                                            <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 am</li>
+                                                            <li class="item-cat hidden-xs"><i class="fa fa-bars"></i> <a href="/secondhand/search/category?searchkey={$a.goods_type}">Electronics</a></li>
+                                                            <li class="item-type"><i class="fa fa-bookmark"></i>{$a.goods_quality}</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-3">
+                                                    <div class="item-price">
+                                                        <h3>¥ {$a.goods_price}</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/volist}
+                                </div>
+                                <?php }  ?>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <ul class="pagination">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>  
+                    </div>
+                </div>
+            </section>
+            <div class="footer">
+                <div class="container">
+                <ul class="pull-left footer-menu">
+                    <li>
+                        <a href="#"> Home </a>
+                        <a href="#"> About us </a>
+                        <a href="#"> Contact us </a>
+                    </li>
+                </ul>
+                <ul class="pull-right footer-menu">
+                    <li>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Essentials -->
+        <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/static/assets/plugins/owl-carousel/owl.carousel.js"></script>
+        <script src="/static/assets/plugins/counter/jquery.countTo.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+    {/block}

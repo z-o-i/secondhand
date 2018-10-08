@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<script src="/static/bootstrap-3.3.7-dist/jquery/jquery.slim.min.js" ></script>
+    <script src="/static/bootstrap-3.3.7-dist/jquery/popper.min.js" ></script>
+    <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+    	function myConfirm(){
+    		return confirm("确认删除数据?");
+    	}
+    </script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>id</td>
+			<td>姓名</td>
+			<td>删除</td>
+			<td>修改</td>
+		</tr>
+		{volist name="Zy" id="a"}
+		<tr>
+			<td>{$a.id}</td>
+			<td>{$a.name}</td>
+			<td>
+				<a href="/m4/index/delete?id={$a.id}" onclick="return myConfirm()">
+					<button class="btn btn-default" type="button">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</a>
+			</td>
+			<td><a href="/m4/index/edit1?id={$a.id}">修改</a></td>
+		</tr>
+		{/volist}
+	</table>
+</body>
+</html>

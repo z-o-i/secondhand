@@ -1,0 +1,66 @@
+{extend name="model"}
+
+{block name="title"}
+结算
+{/block}
+{block name="js"}
+<script>
+    function add(){
+        document.forms.buy.action="/secondhand/buy/add";
+        document.forms.buy.submit();
+    }
+    function reduce(){
+        document.forms.buy.action="/secondhand/buy/reduce";
+        document.forms.buy.submit();
+    }
+    function buynow(){
+        document.forms.buy.action="/secondhand/buy/buynow";
+        document.forms.buy.submit();
+    }
+</script>
+{/block}
+
+{block name="body"}
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8">
+                    <div>
+                        <form method="post" id="buy" action="/secondhand/buy/buy">
+                            <table>
+                                <tr>
+                                    <td><text class="title">{$goods.name}</text></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="{$goods.image}" width="200px" height="200px"></td>
+                                </tr>
+                                <tr>
+                                    <td>价格：</td>
+                                    <td>{$goods.price}</td>
+                                </tr>
+                                <tr>
+                                    <td>数量：</td>
+                                    <td>
+                                        <button class="glyphicon glyphicon-minus" onclick="reduce();"></button>
+                                        {$goods.num}
+                                        <button class="glyphicon glyphicon-plus" onclick="add();"></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>总价：</td>
+                                    <td>{$goods.toprice}</td>
+                                </tr>
+                                <input type="hidden" name="id" value="{$goods.id}"/>
+                                <tr>
+                                    <td><a href="/secondhand/buycar/index"><input type="button" value="返回"></a></td>
+                                    <td><input type="submit" value="确认购买" onclick="buynow();"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{/block}

@@ -1,0 +1,39 @@
+{extend name="layout"}
+
+{block name="title"}
+	查看账单
+{/block}
+
+{block name="body"}
+	<h1>查看账单</h1>
+	<table>
+		<tr>
+			<td>编号</td>
+			<td>种类</td>
+			<td>价格</td>
+			<td>创建日期</td>
+			<td>删除</td>
+			<td>修改</td>
+		</tr>
+		{volist name="bill" id="a"}
+		<!-- id相当于循环变量 -->
+		<tr>
+			<td><input type="text" value="{$a.id}"></td>
+			<td><input type="text" value="{$a.kinds}"></td>
+			<td><input type="text" value="{$a.price}"></td>
+			<td><input type="text" value="{$a.logDate|date="Y-m-d",###}"></td>
+			<td>
+				<a href="/bill2/delete/index?id={$a.id}" onclick="return myConfirm()">
+					<button type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</a>
+			</td>
+			<td><a href="/bill2/delete/edit?id={$a.id}">修改</a></td>
+		</tr>
+		{/volist}
+		<a href="/bill2/index">返回页面</a>
+		<br>
+		<a href="/bill2/add/index">新增记录</a>
+	</table>
+{/block}

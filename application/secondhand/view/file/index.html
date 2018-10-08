@@ -1,0 +1,83 @@
+{extend name="layout"}
+
+{block name="title"}
+商品信息
+{/block}
+{block name="css"}
+<style>
+    body{
+        padding-top:100px;
+    }
+
+    .searchNav{
+        margin: 0 auto;
+        width: 850px;
+    }
+    .searchValue{
+        width: 800px;
+    }
+    .searchBtn{
+        height:26px;
+        width: auto;
+    }
+</style>
+{/block}
+
+{block name="body"}
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a href="/secondhand/index/index" class="navbar-brand nav-title">二手周边贩卖市场</a>-->
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav navbar-left">
+                    <?php if(session('loginId')){  ?>
+                    <li><a href="">当前登录用户：{$Think.session.loginId}</a></li>
+                    <li><a href="/secondhand/login/logout">注销</a></li>
+                    <?php }else{  ?>
+                    <li><a href="/secondhand/login/index">请登录</a></li>
+                    <li><a href="/secondhand/register/index">现在注册</a></li>
+                    <?php }  ?>
+                    <li><a href="/secondhand/personal/index">个人中心</a></li>
+                    <!--<li><a href="/secondhand/login/logout">注销[{$Think.session.loginId}]</a></li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/secondhand/index/index">首页</a></li>
+                    <li><a href="/secondhand/buycar/index">购物车</a></li>
+                    <li><a href="/secondhand/record/index">我的订单</a></li>
+                    <li><a href="/secondhand/sell/index">我要卖</a></li>
+                    <!-- <li>当前登录用户：{$Request.session.loginId}</li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <form action="/secondhand/file/upload" enctype="multipart/form-data" method="post">
+            <table>
+                <tr>
+                    <td>商品名称：</td>
+                    <td><input type="text" id="goods_name" name="goods_name"/></td>
+                </tr>
+                <tr>
+                    <td>上传图片：</td>
+                    <td><input type="file" name="image[]" id=""/></td>
+                    <td><input type="file" name="image[]" id=""/></td>
+                    <td><input type="file" name="image[]" id=""/></td>
+                </tr>
+
+                <input type="hidden" id="goods_owner" name="goods_owner" value="{$Think.session.loginId}"/>
+
+                <tr><td><input type="submit" value="上传" /></td></tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}

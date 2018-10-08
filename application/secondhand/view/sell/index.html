@@ -1,0 +1,62 @@
+{extend name="model"}
+
+{block name="title"}
+出售商品
+{/block}
+
+{block name="body"}
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-md-offset-2">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3>Sell</h3>
+                        </div>
+                        <div class="widget-body">
+                            <form action="/secondhand/sell/upload" enctype="multipart/form-data" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" placeholder="商品名称：" id="goods_name" name="goods_name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control input-lg" placeholder="商品数量：" id="goods_amount" name="goods_amount">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" placeholder="商品价格：" id="goods_price" name="goods_price">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" placeholder="商品质量：" id="goods_quality" name="goods_quality">
+                                </div>
+                                <div class="form-group">
+                                    <span>商品分类：</span>
+                                    <select id="type" name="goods_type" class="form-control input-lg">
+                                        <option value="1">小卡卡贴</option>
+                                        <option value="2">专辑海报</option>
+                                        <option value="3">明信写真</option>
+                                        <option value="4">衣服配饰</option>
+                                        <option value="5">限量定制</option>
+                                        <option value="6">其它周边</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" placeholder="商品简介：" id="goods_introduce" name="goods_introduce">
+                                </div>
+                                <div class="form-group">
+                                    <span>图片上传：</span>
+                                    <input type="file" name="image[]" id=""/>
+                                    <input type="file" name="image[]" id=""/>
+                                    <input type="file" name="image[]" id=""/>
+                                </div>
+                                <input type="hidden" id="goods_owner" name="goods_owner" value="{$Think.session.loginId}"/>
+                                <div class="form-group">
+                                    <button class="btn btn-block btn-custom">Sell</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{/block}

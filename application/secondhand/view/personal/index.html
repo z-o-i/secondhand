@@ -1,0 +1,40 @@
+{extend name="model"}
+
+{block name="title"}
+个人中心
+{/block}
+
+{block name="body"}
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8">
+                    <div>
+                        <table>
+                            <tr>
+                                <td>用户昵称：</td>
+                                <td>{$user.user_nickname}</td>
+                            </tr>
+                            <tr>
+                                <td>真实姓名：</td>
+                                <td>{$user.user_realname}</td>
+                            </tr>
+                            <tr>
+                                <td>地址：</td>
+                                <td>{$user.user_address}</td>
+                            </tr>
+                            <tr>
+                                <td>联系方式：</td>
+                                <td>{$user.user_phone}</td>
+                            </tr>
+                            <tr>
+                                <td><button type="button" class="btn btn-default"><a href="/secondhand/personal/update" style="text-decoration:none">修改</a></button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{/block}

@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<title><!--{$title}--></title>  
+</head>  
+<body>  
+<form action="__URL__/update" method="post">  
+    用户名：<input type="text" name="username" value="<!--{$user['username']}-->"><br/>  
+    密码：<input type="text" name="password" value="<!--{$user['password']}-->"><br/>  
+    ip：<input type="text" name="createip" value="<!--{$user['createip']}-->"><br/>  
+    创建时间：<input type="text" name="createtime" value="<!--{$user['createtime']}-->"><br/>  
+    <input type="submit" value="更新">  
+    <!--{__NOTOKEN__}-->  
+    <input type="hidden" value="<!--{$user['id']}-->" name="id">  
+</form>  
+</body>  
+</html>  

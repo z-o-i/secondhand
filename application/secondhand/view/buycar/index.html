@@ -1,0 +1,83 @@
+{extend name="model"}
+{block name="css"}
+<style>
+    img{
+        width:150px;
+        height:150px;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    footer{
+        margin-left: 900px;
+        margin-bottom: 30px;
+    }
+</style>
+<script>
+    function buy(){
+        document.forms.buy.action="/secondhand/buy/gwc";
+        document.forms.buy.submit();
+    }
+</script>
+{/block}
+{block name="body"}
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div>
+                        <table>
+                            <tr>
+                                <!-- <td>全选</td> -->
+                                <td>商品</td>
+                                <td>单价</td>
+                                <td>数量</td>
+                                <td>库存</td>
+                                <!-- <td>操作</td> -->
+                            </tr>
+                            {volist name="buycar" id="buycar"}
+                            <form method="post" id="buy">
+                                <tr>
+                                    <!-- <td><input type="checkbox"></td> -->
+                                    <td><img src="{$buycar.image}" alt="{$buycar.name}">{$buycar.name}</td>
+                                    <td>{$buycar.price}</td>
+                                    <td>
+                                        <a href="/secondhand/buycar/reduce?cid={$buycar.id}&&?cnum={$buycar.num}&&gnum={$buycar.gnum}"><input type="button" value="-" onclick="reduce()"></a>
+                                        <input name="num" type="text" value="{$buycar.num}" style="width:30px">
+                                        <a href="/secondhand/buycar/add?cid={$buycar.id}&&?cnum={$buycar.num}&&gnum={$buycar.gnum}"><input type="button" value="+" ></a>
+                                    </td>
+                                    <td id="gnum">{$buycar.gnum}</td>
+                                    <!-- <td><a href="/secondhand/buycar/delete?id={$buycar.id}">删除</a></td> -->
+                                    <input type="hidden" value="{$buycar.id}" name="id">
+                                </tr>
+                            </form>
+                            {/volist}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>共{$c}样商品</p>
+        <p>总价：{$price}</p>
+        <input type="submit" value="立即结算" onclick="buy()" />
+        <a href="/secondhand/buycar/clear"><input type="submit" value="清空购物车"></a>
+    </footer>
+    <div class="footer">
+        <div class="container">
+            <ul class="pull-left footer-menu">
+                <li>
+                    <a href="#"> Home </a>
+                    <a href="#"> About us </a>
+                    <a href="#"> Contact us </a>
+                </li>
+            </ul>
+            <ul class="pull-right footer-menu">
+                <li>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">Azoiz</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{/block}

@@ -1,0 +1,63 @@
+{extend name="model"}
+
+{block name="title"}
+订单详情
+{/block}
+{block name="css"}
+<style>
+    table{
+        border-collapse: separate;
+        border-spacing: 20px;
+    }
+    td{
+        padding: 0.3em 1em;
+    }
+</style>
+{/block}
+
+{block name="body"}
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <table>
+                        <form>
+                            <tr>
+                                <td>商品名称：</td>
+                                <td>商品数量：</td>
+                                <td>商品价格：</td>
+                                <td>卖家昵称：</td>
+                                <td>发货地址：</td>
+                                <td>买家昵称：</td>
+                                <td>收货地址</td>
+                            </tr>
+                            {volist name="record" id="a"}
+                            <tr>
+                                <td>{$a.goods_name}</td>
+                                <td>{$a.goods_amount}</td>
+                                <td>{$a.goods_toprice}</td>
+                                <td>{$a.owner_name}</td>
+
+                                <?php if($find[0]==$find[1]){  ?>
+                                <td>{$find[1]} {$find[2]}</td>
+                                <?php }else{  ?>
+                                <td>{$find[0]} {$find[1]}</td>
+                                <?php }  ?>
+
+
+                                <td>{$a.customer_name}</td>
+                                <?php if($find2[0]==$find2[1]){  ?>
+                                <td>{$find2[1]} {$find2[2]}</td>
+                                <?php }else{  ?>
+                                <td>{$find2[0]} {$find2[1]}</td>
+                                <?php }  ?>
+                            </tr>
+                            {/volist}
+                        </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{/block}

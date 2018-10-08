@@ -1,0 +1,60 @@
+{extend name="model"}
+
+{block name="title"}
+结算
+{/block}
+{block name="js"}
+<script>
+    function buynow(){
+        document.forms.buy.action="/secondhand/buy/gwcbuy";
+        document.forms.buy.submit();
+    }
+</script>
+{/block}
+{block name="css"}
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+{/block}
+
+{block name="body"}
+    <section class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8">
+                    <div>
+                        <table>
+                            <tr>
+                                <td>商品</td>
+                                <td>图片</td>
+                                <td>单价</td>
+                                <td>数量</td>
+                                <td>总价</td>
+                            </tr>
+                            {volist name="goods" id="goods"}
+                            <form method="post" id="buy">
+                                <tr>
+                                    <td><text class="title">{$goods.name}</text></td>
+                                    <td><img src="{$goods.image}" width="100px" height="100px"></td>
+                                    <td>{$goods.price}</td>
+                                    <td>{$goods.num}</td>
+                                    <td>{$goods.toprice}</td>
+                                    <input type="hidden" name="id" value="{$goods.id}"/>
+                                </tr>
+                            </form>
+                            {/volist}
+                            <tr>
+                                <td><a href="/secondhand/buycar/index"><input type="button" value="返回"></a></td>
+                                <td><input type="submit" value="确认购买" onclick="buynow();"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{/block}
